@@ -1,0 +1,49 @@
+import org.yaml.snakeyaml.Yaml
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.yaml:snakeyaml:2.0'
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.9.10'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+ext.kotlin_version = '1.9.10'
+group 'com.okame486'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
+    shadow "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '17'
+}
+
+FileInputStream pluginYmlInputStream = new FileInputStream(project.file('src/main/resources/plugin.yml'))
+def pluginYml = new Yaml().load(pluginYmlInputStream)
+String pluginVersion = pluginYml.version
+
+shadowJar {
+    archiveBaseName.set(project.name)
+    archiveVersion.set(pluginVersion)
+    relocate 'kotlin', 'com.okamesvr.growthpromotant'
+    archiveClassifier.set('')
+}
+
+

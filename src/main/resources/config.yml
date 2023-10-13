@@ -1,0 +1,17 @@
+# スニーク時に成長する確率(0.0 ~ 1.0)
+PROBABILITY: 0.2
+
+# スニークのクールタイム(0.1秒 = 100)
+COOLTIME: 0
+
+# 成長時に骨粉のパーティクルを出現させるか(出現させる = true)
+BoneParticle: true
+
+# 完全に成長したときにパーティクルを出現させるか(出現させる - true)
+CompleteGrowthParticle: true
+
+# 成長時に骨粉の音を出すか(出す = true)
+BoneSound: true
+
+# 完全に成長したときに音を出すか(出す = true)
+FullGrowthSound: true
