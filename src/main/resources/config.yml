@@ -15,3 +15,6 @@ BoneSound: true
 
 # 完全に成長したときに音を出すか(出す = true)
 FullGrowthSound: true
+
+# 耕された土が踏み荒らされないようにするか(する = true)
+FarmProtect: true

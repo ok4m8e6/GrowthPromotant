@@ -26,18 +26,19 @@ class SneakListener : Listener {
         val playerLocation = player.location
         val block = playerLocation.subtract(0.0, 0.9375, 0.0).block
 
-        // クールタイム処理
-        val currentTime = System.currentTimeMillis()
-
-        if (sneakCooldown.containsKey(player.uniqueId)) {
-            val lastSneakTime = sneakCooldown[player.uniqueId]
-            if (lastSneakTime != null && currentTime - lastSneakTime < COOLTIME) {
-                return
-            }
-        }
-        sneakCooldown[player.uniqueId] = currentTime
 
         if (block.type == Material.FARMLAND) {
+            // クールタイム処理
+            val currentTime = System.currentTimeMillis()
+
+            if (sneakCooldown.containsKey(player.uniqueId)) {
+                val lastSneakTime = sneakCooldown[player.uniqueId]
+                if (lastSneakTime != null && currentTime - lastSneakTime < COOLTIME) {
+                    return
+                }
+            }
+            sneakCooldown[player.uniqueId] = currentTime
+
             val aboveBlock = block.location.add(0.0, 1.0, 0.0).block
             val blockData = aboveBlock.blockData
 

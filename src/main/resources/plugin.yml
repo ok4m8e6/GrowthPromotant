@@ -1,5 +1,12 @@
 name: GrowthPromotant
-version: '1.0.0'
+version: '1.0.1'
 main: com.okamesvr.growthpromotant.GrowthPromotant
 api-version: '1.20'
 authors: [okame486]
+commands:
+  growpromo:
+    aliases:
+      - gp
+    permission: op
+    usage: /growpromo <option>
+

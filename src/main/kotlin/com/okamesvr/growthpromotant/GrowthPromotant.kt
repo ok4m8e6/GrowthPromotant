@@ -1,17 +1,17 @@
 package com.okamesvr.growthpromotant
 
+import com.okamesvr.growthpromotant.utils.ConfigHandler
+import com.okamesvr.growthpromotant.utils.FarmProtect
 import org.bukkit.plugin.java.JavaPlugin
 
 class GrowthPromotant : JavaPlugin() {
     override fun onEnable() {
         saveDefaultConfig()
-        SneakListener.PROBABILITY = config.getDouble("PROBABILITY")
-        SneakListener.COOLTIME = config.getDouble("COOLTIME").toInt()
-        SneakListener.BoneParticle = config.getBoolean("BoneParticle")
-        SneakListener.CompleteGrowthParticle = config.getBoolean("CompleteGrowthParticle")
-        SneakListener.BoneSound = config.getBoolean("BoneSound")
-        SneakListener.FullGrowthSound = config.getBoolean("FullGrowthSound")
+        ConfigHandler(config).loadConfig()
         server.pluginManager.registerEvents(SneakListener(), this)
+        server.pluginManager.registerEvents(FarmProtect(), this)
+        getCommand("growpromo")?.setExecutor(CommandClass(this))
+        
         // Plugin startup logic
     }
 
