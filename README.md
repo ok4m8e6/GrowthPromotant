@@ -62,7 +62,7 @@ FarmProtect: true
 
 **Config の詳細な説明**
 
-config 設定を変更した場合はサーバーを再起動してください
+config 設定を変更した場合はサーバーを再起動してください<br>[GrowthPromotant-v1.0.1-rc](https://github.com/okame-486/GrowthPromotant/releases/tag/v1.0.1-rc)を使用している場合は `/gp reload`で再読み込みができます
 
 | Cnfig                  | 内容                                                                                   | デフォルト |
 | ---------------------- | -------------------------------------------------------------------------------------- | ---------- |
