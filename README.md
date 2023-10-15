@@ -11,9 +11,9 @@ GrowthPromotant は Minecraft の植物の成長を促進する機能を追加�
 
 ### ダウンロード
 
-| 対応 MC       | 安定                                                                                       | 最新                                                                                       |
-| ------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| 1.20 ~ 1.20.2 | [GrowthPromotant v1.0.0](https://github.com/okame-486/GrowthPromotant/releases/tag/v1.0.0) | [GrowthPromotant v1.0.0](https://github.com/okame-486/GrowthPromotant/releases/tag/v1.0.0) |
+| 対応 MC       | 安定                                                                                       | 最新                                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| 1.20 ~ 1.20.2 | [GrowthPromotant v1.0.0](https://github.com/okame-486/GrowthPromotant/releases/tag/v1.0.0) | [GrowthPromotant v1.0.1-rc](https://github.com/okame-486/GrowthPromotant/releases/tag/v1.0.1-rc) |
 
 [その他のバージョン](https://github.com/okame-486/GrowthPromotant/tags)
 
@@ -27,7 +27,10 @@ GrowthPromotant は Minecraft の植物の成長を促進する機能を追加�
 #### 対応しているもの
 
 - [x] 耕された土で育つ植物
-- [ ] 苗木
+- [ ] サトウキビ
+- [ ] 竹
+- [ ] 桜の花びら
+- [ ] 苗木系
 - [ ] 動物
 
 ### カスタマイズ 設定
@@ -52,6 +55,9 @@ BoneSound: true
 
 # 完全に成長したときに音を出すか(出す = true)
 FullGrowthSound: true
+
+# 耕された土が踏み荒らされないようにするか(する = true)
+FarmProtect: true
 ```
 
 **Config の詳細な説明**
@@ -66,12 +72,12 @@ config 設定を変更した場合はサーバーを再起動してください
 | CompleteGrowthParticle | 完全に成長した場合にパーティクルを出すか                                               | true       |
 | BoneSound              | 骨粉使用のパーティクルを出すときに骨粉使時と<br>同じ音をだすか                         | true       |
 | FullGrowthSound        | 完全に成長した場合に音を出すか                                                         | true       |
+| FarmProtect            | 耕された土がプレイヤーによって踏み荒らされないようにするか                             | true       |
 
 ### 実装予定の機能
 
-- Config 設定の変更時に再起動をせずに設定の変更を適応できる reload コマンドの追加
-- Config の項目をコマンドからも変更可能にする
-- 苗木や動物の対応
+- コマンドからの Config の変更
+- 対応していないものの対応
 
 ### 開発 API
 
