@@ -64,15 +64,15 @@ FarmProtect: true
 
 config 設定を変更した場合はサーバーを再起動してください<br>[GrowthPromotant-v1.0.1-rc](https://github.com/okame-486/GrowthPromotant/releases/tag/v1.0.1-rc)を使用している場合は `/gp reload`で再読み込みができます
 
-| Cnfig                  | 内容                                                                                   | デフォルト |
-| ---------------------- | -------------------------------------------------------------------------------------- | ---------- |
-| PROBABILITY            | 一回のスニークで成長する確率                                                           | 0.2        |
-| COOLTIME               | 1 回のスニークで ROBABILITY で設定した確率処理が<br>行われるクールタイム(0.1 秒 = 100) | 0          |
-| BoneParticle           | 成長時に骨粉使用時と同じ緑のパーティクルを出すか                                       | true       |
-| CompleteGrowthParticle | 完全に成長した場合にパーティクルを出すか                                               | true       |
-| BoneSound              | 骨粉使用のパーティクルを出すときに骨粉使時と<br>同じ音をだすか                         | true       |
-| FullGrowthSound        | 完全に成長した場合に音を出すか                                                         | true       |
-| FarmProtect            | 耕された土がプレイヤーによって踏み荒らされないようにするか                             | true       |
+| Cnfig                        | 内容                                                                                   | デフォルト |
+| ---------------------------- | -------------------------------------------------------------------------------------- | ---------- |
+| PROBABILITY                  | 一回のスニークで成長する確率                                                           | 0.2        |
+| COOLTIME                     | 1 回のスニークで ROBABILITY で設定した確率処理が<br>行われるクールタイム(0.1 秒 = 100) | 0          |
+| BoneParticle                 | 成長時に骨粉使用時と同じ緑のパーティクルを出すか                                       | true       |
+| CompleteGrowthParticle       | 完全に成長した場合にパーティクルを出すか                                               | true       |
+| BoneSound                    | 骨粉使用のパーティクルを出すときに骨粉使時と<br>同じ音をだすか                         | true       |
+| FullGrowthSound              | 完全に成長した場合に音を出すか                                                         | true       |
+| FarmProtect(v1.0.1 以降のみ) | 耕された土がプレイヤーによって踏み荒らされないようにするか                             | true       |
 
 ### 実装予定の機能
 
