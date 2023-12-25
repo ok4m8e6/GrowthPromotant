@@ -1,6 +1,7 @@
 package com.okamesvr.growthpromotant
 
 import com.okamesvr.growthpromotant.utils.CooldownHandler
+import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.Sound
@@ -19,6 +20,9 @@ class SneakListener : Listener {
         var FullGrowthSound = true
         private val cooldownHandler = CooldownHandler()
     }
+
+    private val saplingAges = HashMap<Location, Int>()
+
     @EventHandler
     fun onPlayerToggleSneak(event: PlayerToggleSneakEvent) {
         val player = event.player
@@ -72,12 +76,11 @@ class SneakListener : Listener {
             }
 
             // ブロックデータの取得
-            val aboveBlock = block.location.add(0.0, 0.0, 0.0).block
-            val blockData = aboveBlock.blockData
+            val blockData = block.blockData
 
             if (blockData is Ageable) {
 
-                val topBlock = aboveBlock.location.add(0.0, 1.0, 0.0).block
+                val topBlock = block.location.add(0.0, 1.0, 0.0).block
                 val topTopBlock = topBlock.location.add(0.0, 1.0, 0.0).block
 
                 // 成長のリセット処理
@@ -89,10 +92,10 @@ class SneakListener : Listener {
 
                 if (blockData.age < blockData.maximumAge && Random.nextDouble() < PROBABILITY) {
                     blockData.age += 1
-                    aboveBlock.blockData = blockData
+                    block.blockData = blockData
 
-                    val particleLocation = aboveBlock.location.add(0.5, 0.1, 0.5)
-                    val endRodLocation = aboveBlock.location.add(0.5, 0.0, 0.5)
+                    val particleLocation = block.location.add(0.5, 0.1, 0.5)
+                    val endRodLocation = block.location.add(0.5, 0.0, 0.5)
 
                     if (BoneParticle) {
                         player.world.spawnParticle(Particle.VILLAGER_HAPPY, particleLocation, 8, 0.2, 0.0, 0.2)
@@ -102,15 +105,14 @@ class SneakListener : Listener {
                     }
 
                     if (blockData.age == blockData.maximumAge) {
-                        // 修正必須
                         if (topBlock.type == Material.SUGAR_CANE && topTopBlock.type != Material.SUGAR_CANE) {
                             topTopBlock.type = Material.SUGAR_CANE
                             blockData.age = 15
-                            aboveBlock.blockData = blockData
+                            block.blockData = blockData
                         } else if (topBlock.type != Material.SUGAR_CANE && topTopBlock.type != Material.SUGAR_CANE) {
                             topBlock.type = Material.SUGAR_CANE
                             blockData.age = 0
-                            aboveBlock.blockData = blockData
+                            block.blockData = blockData
                         }
 
                         if (FullGrowthSound) {
@@ -123,5 +125,16 @@ class SneakListener : Listener {
                 }
             }
         }
+
+        /* 苗木処理Dev
+        if (block.type == Material.OAK_SAPLING) {
+            val age = saplingAges.getOrDefault(block.location, 0) + 1
+            saplingAges[block.location] = age
+
+            if (age >= 5) {
+                block.type = Material.OAK_LOG
+                saplingAges.remove(block.location)
+            }
+        }*/
     }
 }
