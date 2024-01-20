@@ -29,6 +29,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
     shadow "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    
 }
 
 compileKotlin {
@@ -43,7 +44,7 @@ shadowJar {
     archiveBaseName.set(project.name)
     archiveVersion.set(pluginVersion)
     relocate 'kotlin', 'com.okamesvr.growthpromotant'
-    archiveClassifier.set('dev')
+    archiveClassifier.set('beta')
 }
 
 
