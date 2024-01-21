@@ -15,7 +15,11 @@ class SneakListener : Listener {
         val playerLocation = player.location
         val farmlandBlock = playerLocation.subtract(0.0, 0.9375, 0.0).block
         val block = playerLocation.subtract(0.0, -1.0, 0.0).block
-        //TODO blockなどがAIRの時処理を終了してパフォーマンスを最適化
+
+        if (farmlandBlock.type == Material.AIR || block.type == Material.AIR) {
+            return
+        }
+
         if (farmlandBlock.type == Material.FARMLAND) {
             Farmland().processFarmland(player, farmlandBlock)
         }

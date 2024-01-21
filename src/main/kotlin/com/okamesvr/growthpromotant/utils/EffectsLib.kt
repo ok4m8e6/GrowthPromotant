@@ -14,6 +14,7 @@ class EffectsLib {
         val CompleteGrowthParticleType = Particle.END_ROD
         val BoneSoundType = Sound.ITEM_BONE_MEAL_USE
         val FullGrowthSoundType = Sound.ENTITY_PLAYER_LEVELUP
+        val warningSoundType = Sound.BLOCK_ANVIL_USE
     }
 
     fun boneParticl(player: Player, location: Location, count: Int, offsetX: Double, offsetY: Double, offsetZ: Double, speed: Double) {
@@ -38,5 +39,9 @@ class EffectsLib {
         if (FullGrowthSound) {
             player.playSound(location, FullGrowthSoundType, volume, pitch)
         }
+    }
+
+    fun warningSound(player: Player, location: Location, volume: Float, pitch: Float) {
+        player.playSound(location, warningSoundType, volume, pitch)
     }
 }

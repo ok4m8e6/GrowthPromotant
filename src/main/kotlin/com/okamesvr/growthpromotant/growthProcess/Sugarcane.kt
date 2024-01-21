@@ -2,7 +2,7 @@ package com.okamesvr.growthpromotant.growthProcess
 
 import com.okamesvr.growthpromotant.utils.CooldownHandler
 import com.okamesvr.growthpromotant.utils.EffectsLib
-import org.bukkit.*
+import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.block.data.Ageable
 import org.bukkit.entity.Player
@@ -26,9 +26,13 @@ class Sugarcane {
         val blockData = block.blockData
 
         if (blockData is Ageable) {
-
             val topBlock = block.location.add(0.0, 1.0, 0.0).block
             val topTopBlock = topBlock.location.add(0.0, 1.0, 0.0).block
+
+            when {
+                topBlock.type == Material.SUGAR_CANE && topTopBlock.type != Material.AIR -> return
+                topBlock.type != Material.AIR && topBlock.type != Material.SUGAR_CANE -> return
+            }
 
             // 成長のリセット処理
             if (blockData.age == 15 && topTopBlock.type == Material.AIR) {
@@ -43,16 +47,15 @@ class Sugarcane {
 
                 val particleLocation = block.location.add(0.5, 0.1, 0.5)
                 val endRodLocation = block.location.add(0.5, 0.0, 0.5)
-
                 effectsLib.boneParticl(player, particleLocation,8, 0.2, 0.0, 0.2, 0.03)
                 effectsLib.boneSound(player, player.location, 1.0f, 1.5f)
 
                 if (blockData.age == blockData.maximumAge) {
-                    if (topBlock.type == Material.SUGAR_CANE && topTopBlock.type != Material.SUGAR_CANE) {
+                    if (topBlock.type == Material.SUGAR_CANE && topTopBlock.type == Material.AIR) {
                         topTopBlock.type = Material.SUGAR_CANE
                         blockData.age = 15
                         block.blockData = blockData
-                    } else if (topBlock.type != Material.SUGAR_CANE && topTopBlock.type != Material.SUGAR_CANE) {
+                    } else if (topBlock.type == Material.AIR) {
                         topBlock.type = Material.SUGAR_CANE
                         blockData.age = 0
                         block.blockData = blockData
