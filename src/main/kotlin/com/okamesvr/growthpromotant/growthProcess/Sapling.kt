@@ -45,7 +45,18 @@ class Sapling {
 
         if (age == MAX_AGE) {
             block.type = Material.AIR
-            block.world.generateTree(block.location, TreeType.TREE)
+            val randomValue = Random.nextDouble()
+
+            // 確率で巨大な木が成長する処理の追加
+            if (randomValue <= 0.1) {
+                block.world.generateTree(block.location, TreeType.BIG_TREE)
+                if (block.type == Material.AIR) {
+                    block.world.generateTree(block.location, TreeType.TREE)
+                }
+            } else {
+                block.world.generateTree(block.location, TreeType.TREE)
+            }
+
             saplingAges.remove(block.location)
 
             // 成長スペースがない場合に苗木のみ消える仕様を修正
