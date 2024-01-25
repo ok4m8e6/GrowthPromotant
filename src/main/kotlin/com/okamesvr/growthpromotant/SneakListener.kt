@@ -4,6 +4,7 @@ import com.okamesvr.growthpromotant.growthProcess.Farmland
 import com.okamesvr.growthpromotant.growthProcess.Sapling
 import com.okamesvr.growthpromotant.growthProcess.Sugarcane
 import org.bukkit.Material
+import org.bukkit.Tag
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerToggleSneakEvent
@@ -28,15 +29,7 @@ class SneakListener : Listener {
             Sugarcane().processSugarcane(player, block)
         }
 
-        if (
-            block.type == Material.OAK_SAPLING ||
-            block.type == Material.SPRUCE_SAPLING ||
-            block.type == Material.BIRCH_SAPLING ||
-            block.type == Material.JUNGLE_SAPLING ||
-            block.type == Material.ACACIA_SAPLING ||
-            block.type == Material.DARK_OAK_SAPLING ||
-            block.type == Material.CHERRY_SAPLING
-            ) {
+        if (Tag.SAPLINGS.isTagged(block.type)) {
             Sapling().processSapling(player, block)
         }
     }
