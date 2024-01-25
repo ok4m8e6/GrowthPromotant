@@ -28,7 +28,15 @@ class SneakListener : Listener {
             Sugarcane().processSugarcane(player, block)
         }
 
-        if (block.type == Material.OAK_SAPLING) {
+        if (
+            block.type == Material.OAK_SAPLING ||
+            block.type == Material.SPRUCE_SAPLING ||
+            block.type == Material.BIRCH_SAPLING ||
+            block.type == Material.JUNGLE_SAPLING ||
+            block.type == Material.ACACIA_SAPLING ||
+            block.type == Material.DARK_OAK_SAPLING ||
+            block.type == Material.CHERRY_SAPLING
+            ) {
             Sapling().processSapling(player, block)
         }
     }
